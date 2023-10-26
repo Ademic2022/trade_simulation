@@ -56,7 +56,7 @@ def simulate_trading(request, trader_name):
         elif action == 'stop':
             """Set the simulation state to 'stopped' in the database"""
             trader.set_simulation_state('stopped', db)
-            messages.success(request, 'Trade activities stopped')
+            messages.success(request, 'Trade activities stopped, enter your account name to see trade activities ')
             return redirect('dashboard')
     """get user collection from database"""
     user_data = user_colection(trader_name, db)
