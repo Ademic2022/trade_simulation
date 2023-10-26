@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Lucky User{% endblock %}
+
+{% block page_content %}
+
+  <br>
+  <div class="ui container">
+    <div class="ui green attached message centered segment">
+      <div class="header">
+        Welcome, you are one of our lucky Trader
+      </div>
+      <p>Fill out the form below to create a new account</p>
+    </div>
+    <form class="ui form attached fluid centered segment" method="post" action="{% url 'lucky_trader' %}">
+      {% csrf_token %}
+      <div class="field">
+          <label for="username">Username</label>
+          <input placeholder="Your Username" type="text" name="username" id="username" required>
+      </div>
+      <div class="inline field">
+          <div class="ui checkbox">
+              <input type="checkbox" id="terms" name="agree_terms">
+              <label for="terms">I agree to the terms and conditions</label>
+          </div>
+      </div>
+      <input type="submit" class="ui blue submit button">
+    </form>
+  </div>
+
+</div>
+{% endblock %}

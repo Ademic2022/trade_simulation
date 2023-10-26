@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}Lucky User{% endblock %}
+
+{% block page_content %}
+  <br>
+  <div class="ui container">
+    <h1>Simulate Trading</h1>
+    <table class="ui green celled striped table">
+      <thead>
+        <tr><th colspan="3" class="ui inverted">
+          <strong>Trading Details</strong>
+        </th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="collapsing">
+            Account Name
+          </td>
+          <td>{{ user_datas.trader_name|title }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Balance
+          </td>
+          <td>${{ user_datas.balance }}</td>
+        </tr>
+        <tr>
+          <td>
+            Total Trades
+          </td>
+          <td>{{ user_datas.trades }}</td>
+        </tr>
+      </tbody>
+      <tfoot class="full-width">
+          <tr>
+            <th></th>
+            <th colspan="4">
+              <a href="{% url 'simulate_trading' trader_name=user_datas.trader_name %}">
+                  <div class="ui right floated small primary labeled icon button">
+                      <i class="user icon"></i> Trade Now
+                  </div>
+              </a>
+            </th>
+          </tr>
+      </tfoot>
+  </table>
+    <form id="simulation-form" method="POST" action="{% url 'simulate_trading' trader_name=trader_name %}">
+        {% csrf_token %}
+        <input type="hidden" name="user_trader_name" value="{{ user_data.trader_name }}">
+        <button type="submit" name="action" value="start">Start Simulation</button>
+        <button type="submit" name="action" value="stop">Stop Simulation</button>
+</form>
+  </div>
+  
+</div>
+
+<!-- <div id="trader-simulation-data"></div> -->
+{% endblock %}

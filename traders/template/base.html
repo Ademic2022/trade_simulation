@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}">
+    {% block admin_css %}{% endblock %}
+    {% block task_css %}{% endblock %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css"> 
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>{% block title %}Base{% endblock %}</title>
+</head>
+<body id="root">
+    <div id="myDimmer" class="ui active centered inline dimmer">
+        <div class="ui massive text loader">Loading</div>
+    </div>
+</div>
+{% block navigations %}
+<!-- Sidebar Menu -->
+<div class="ui inverted vertical inverted sidebar menu">
+  <a class="active item" href="{% url 'home' %}">Home</a>
+  <a class="item">Services</a>
+  <a class="item">About</a>
+  <a class="item">Admin</a>
+  <a class="item">Dashboard</a>
+</div>
+
+
+<!-- Page Contents -->
+<div class="ui inverted vertical center aligned segment">
+
+<div class="ui container">
+  <div class="ui large secondary inverted pointing menu">
+    <a class="toc item">
+      <i class="sidebar icon"></i>
+    </a>
+    <a class="active item" href="{% url 'home' %}">Home</a>
+    <a class="item">Services</a>
+    <a class="item">About</a>
+    <a class="item">Admin</a>
+    <div class="right item">
+      <a class="ui inverted button" href="{% url 'dashboard' %}">Dashboard</a>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}
+{% include '_messages.html' %}
+{% block page_content %}
+{% endblock %}
+<div class="ui inverted vertical footer segment">
+    <div class="ui container">
+      <div class="ui stackable inverted divided equal height stackable grid">
+        <div class="three wide column">
+          <h4 class="ui inverted header">About</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item">Sitemap</a>
+            <a href="#" class="item">Contact Us</a>
+            <a href="#" class="item">Religious Ceremonies</a>
+            <a href="#" class="item">Gazebo Plans</a>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">Services</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item">Banana Pre-Order</a>
+            <a href="#" class="item">DNA FAQ</a>
+            <a href="#" class="item">How To Access</a>
+            <a href="#" class="item">Favorite X-Men</a>
+          </div>
+        </div>
+        <div class="seven wide column">
+          <h4 class="ui inverted header">Footer Header</h4>
+          <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+        </div>
+      </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js"></script> 
+<script src="{% static 'js/base.js' %}"></script>
+{% block admin_script %}{% endblock %} 
+</body>
+</html>
