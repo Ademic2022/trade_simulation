@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-cygzrj(p5-1_a42yf1uam2c@=m%cfc@3$=af_i4e@6l!i_u75w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['.vercel.app']
+# ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['trade-simulation-eight.vercel.app']
 
 
@@ -124,6 +124,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'traders/static'),  # Define the path to your static files
 ]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'traders/staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
