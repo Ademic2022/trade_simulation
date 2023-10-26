@@ -87,8 +87,7 @@ def lucky_trader(request):
             trader = Trader(trader_name)
             try:
                 trader.store_data(db)
-                messages.success(request, f"Congratulations {username}, 
-                                 you have been given free $100 to Trade")
+                messages.success(request, f"Congratulations {username}, you have been given free $100 to Trade")
                 return redirect('account', trader_name=trader_name)
 
             except pymongo.errors.ConnectionFailure as e:
