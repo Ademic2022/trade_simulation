@@ -38,7 +38,7 @@ class Trader:
             "timestamp": int(time.time()),
             "balance": self.balance,
             "total_trades": self.total_trades,
-            "simulation_state": "running"
+            "simulation_state": self.simulation_state
 
         }
         collection.insert_one(data)
