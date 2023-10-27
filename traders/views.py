@@ -50,7 +50,7 @@ def simulate_trading(request, trader_name):
                 trader.set_simulation_state('running', db)
 
                 simulation_duration_minutes = 10
-                # trader.simulate(db, simulation_duration_minutes)
+                trader.simulate(db, simulation_duration_minutes)
                 messages.success(request, 'Trading in progress...')
                 return HttpResponseRedirect(reverse('simulate_trading', args=[trader_name]))
             else:
