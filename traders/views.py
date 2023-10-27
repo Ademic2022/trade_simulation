@@ -53,8 +53,9 @@ def simulate_trading(request, trader_name):
                 simulation_duration_minutes = 10
                 #trader.simulate(db, simulation_duration_minutes)
                 messages.success(request, 'Trading in progress...')
+                return redirect('dashboard', account_name=user_trader_name)
                 #return render(request, 'simulate_trading.html, {"trader_name": user_trader_name, "user_data": user_data})
-                return redirect('home')
+                # return redirect('home')
             else:
                 messages.success(request, 'User not found')
 
@@ -115,11 +116,12 @@ def account(request, trader_name):
         return redirect('home')
 
 
-def dashboard(request):
+def dashboard(request, account_name=None):
     if request.method == 'POST':
         form_data = request.POST
-        account_name = form_data['account_name'].lower()
-
+        if not account_name:
+            account_name = form_data['account_name'].lower()
+            
         """Check if the trader's collection exists in the database"""
         if account_name in db.list_collection_names():
             user_datas = user_colection(account_name, db)
@@ -139,4 +141,5 @@ def dashboard(request):
         else:
             messages.error(request, 'User not Found.')
     
-    return render(request, "dashboard.html")
+    #return render(request, "dashboard.html")
+    return render(request, "dashboard.html", {"account_name": account_name, "user_datas": user_datas, "graph": graph})
