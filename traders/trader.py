@@ -29,7 +29,7 @@ class Trader:
             self.total_trades += 1
             self.store_data(db)
                 
-            print(f"{self.name} - Minute {minute}: Balance = ${self.balance:.2f}")
+            # print(f"{self.name} - Minute {minute}: Balance = ${self.balance:.2f}")
             time.sleep(60)
 
     def store_data(self, db):
