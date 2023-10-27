@@ -1,5 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 import uuid, json, pymongo
 from .conn import db
 from .trader import Trader
@@ -49,7 +51,8 @@ def simulate_trading(request, trader_name):
 
                 simulation_duration_minutes = 10
                 trader.simulate(db, simulation_duration_minutes)
-
+                message.success(request, 'Trading in progress...')
+                return HttpResponseRedirect(reverse('simulate_trading', args=[user_trader_name]))
             else:
                 messages.success(request, 'User not found')
 
