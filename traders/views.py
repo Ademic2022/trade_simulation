@@ -32,6 +32,8 @@ def user_colection(trader_name, db):
 
 
 def simulate_trading(request, trader_name):
+    """get user collection from database"""
+    user_data = user_colection(trader_name, db)
     
     if request.method == 'POST':
         action = request.POST.get('action')
@@ -65,8 +67,7 @@ def simulate_trading(request, trader_name):
             trader.set_simulation_state('stopped', db)
             messages.success(request, 'Trade activities stopped, enter your account name to see trade activities ')
             return redirect('dashboard')
-    """get user collection from database"""
-    user_data = user_colection(trader_name, db)
+
     return render(request, 'simulate_trading.html', 
                   {"trader_name": trader_name, "user_data": user_data})
 
