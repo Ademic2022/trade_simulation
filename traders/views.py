@@ -123,7 +123,7 @@ def dashboard(request, account_name=None):
     graph = None
     if request.method == 'POST':
         form_data = request.POST
-    I    if not account_name:
+        if not account_name:
             account_name = form_data['account_name'].lower()
             
         """Check if the trader's collection exists in the database"""
