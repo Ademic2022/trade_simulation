@@ -7,7 +7,6 @@ urlpatterns = [
     path('simulate_trading/<str:trader_name>/', views.simulate_trading, name='simulate_trading'),
     path('lucky_trader/', views.lucky_trader, name='lucky_trader'),
     path('account/<str:trader_name>/', views.account, name='account'),
-    path('dashboard', views.dashboard, name='dashboard'),
-
-
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('dashboard/<str:account_name>/', views.dashboard, name='dashboard'),
 ]
