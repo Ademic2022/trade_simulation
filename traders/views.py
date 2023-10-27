@@ -36,6 +36,7 @@ def simulate_trading(request, trader_name):
     if request.method == 'POST':
         action = request.POST.get('action')
         user_trader_name = trader_name
+        print(user_trader_name)
 
         trader = Trader(user_trader_name)
         if action == 'start':
