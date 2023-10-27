@@ -32,10 +32,11 @@ def user_colection(trader_name, db):
 
 
 def simulate_trading(request, trader_name):
-
+    user_trader_name  = trader_name
     if request.method == 'POST':
         action = request.POST.get('action')
-        user_trader_name = request.POST.get('user_trader_name')  # Retrieve user_trader_name
+        # user_trader_name = trader_name
+    
 
         trader = Trader(user_trader_name)
         if action == 'start':
@@ -50,11 +51,10 @@ def simulate_trading(request, trader_name):
                 trader.set_simulation_state('running', db)
 
                 simulation_duration_minutes = 10
-                # trader.simulate(db, simulation_duration_minutes)
+                #trader.simulate(db, simulation_duration_minutes)
                 messages.success(request, 'Trading in progress...')
-                return render(request, 'simulate_trading.html, {"trader_name": user_trader_name, "user_data": user_data})
-                #return redirect('home')
-                #return HttpResponseRedirect(reverse('simulate_trading', args=[user_trader_name]))
+                #return render(request, 'simulate_trading.html, {"trader_name": user_trader_name, "user_data": user_data})
+                return redirect('home')
             else:
                 messages.success(request, 'User not found')
 
@@ -63,10 +63,10 @@ def simulate_trading(request, trader_name):
             trader.set_simulation_state('stopped', db)
             messages.success(request, 'Trade activities stopped, enter your account name to see trade activities ')
             return redirect('dashboard')
-            
-    """get user collection from the database"""
+    """get user collection from database"""
     user_data = user_colection(trader_name, db)
-    return render(request, 'simulate_trading.html', {"trader_name": trader_name, "user_data": user_data})
+    return render(request, 'simulate_trading.html', 
+                  {"trader_name": trader_name, "user_data": user_data})
 
 
 def index(request):
@@ -140,5 +140,3 @@ def dashboard(request):
             messages.error(request, 'User not Found.')
     
     return render(request, "dashboard.html")
-
-
