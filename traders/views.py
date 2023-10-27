@@ -54,7 +54,7 @@ def simulate_trading(request, trader_name):
                 simulation_duration_minutes = 10
                 # trader.simulate(db, simulation_duration_minutes)
                 messages.success(request, 'Trading in progress...')
-                return render(request, 'simulate_trading.html', {"trader_name": user_trader_name, "user_data": user_data})
+                return render(request, 'dashboard.html, {"trader_name": user_trader_name, "user_data": user_data})
                 #return redirect('home')
                 #return HttpResponseRedirect(reverse('simulate_trading', args=[user_trader_name]))
             else:
