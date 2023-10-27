@@ -5,10 +5,11 @@
 <!-- Sidebar Menu -->
 <div class="ui vertical inverted sidebar menu">
   <a class="active item" href="{% url 'home' %}">Home</a>
-  <a class="item">Services</a>
   <a class="item">About</a>
   <a class="item">Admin</a>
-  <a class="item">Dashbord</a>
+  <div class="right item">
+      <a class="ui inverted button" href="{% url 'dashboard' %}">Dashboard</a>
+  </div>
 </div>
 
 
@@ -22,7 +23,6 @@
           <i class="sidebar icon"></i>
         </a>
         <a class="active item" href="{% url 'home' %}">Home</a>
-        <a class="item">Services</a>
         <a class="item">About</a>
         <a class="item">Admin</a>
         <div class="right item">
