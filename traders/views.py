@@ -54,8 +54,7 @@ def simulate_trading(request, trader_name):
                 trader.simulate(db, simulation_duration_minutes)
                 messages.success(request, 'Trading in progress...')
                 return redirect('dashboard', account_name=user_trader_name)
-                #return render(request, 'simulate_trading.html, {"trader_name": user_trader_name, "user_data": user_data})
-                # return redirect('home')
+            
             else:
                 messages.success(request, 'User not found')
 
