@@ -51,7 +51,7 @@ def simulate_trading(request, trader_name):
                 trader.set_simulation_state('running', db)
 
                 simulation_duration_minutes = 10
-                #trader.simulate(db, simulation_duration_minutes)
+                trader.simulate(db, simulation_duration_minutes)
                 messages.success(request, 'Trading in progress...')
                 return redirect('dashboard', account_name=user_trader_name)
                 #return render(request, 'simulate_trading.html, {"trader_name": user_trader_name, "user_data": user_data})
@@ -63,7 +63,8 @@ def simulate_trading(request, trader_name):
             """Set the simulation state to 'stopped' in the database"""
             trader.set_simulation_state('stopped', db)
             messages.success(request, 'Trade activities stopped, enter your account name to see trade activities ')
-            return redirect('dashboard')
+            # return redirect('dashboard')
+            return redirect('dashboard', account_name=user_trader_name)
     """get user collection from database"""
     user_data = user_colection(trader_name, db)
     return render(request, 'simulate_trading.html', 
