@@ -117,6 +117,8 @@ def account(request, trader_name):
 
 
 def dashboard(request, account_name=None):
+    user_datas = None
+    graph = None
     if request.method == 'POST':
         form_data = request.POST
         if not account_name:
